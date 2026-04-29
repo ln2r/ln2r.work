@@ -1,4 +1,4 @@
-import { env } from '$env/dynamic/public'
+import { env } from "$env/dynamic/public";
 const { PUBLIC_API_BASE } = env;
 
 export class Mugunghwa {
@@ -12,7 +12,9 @@ export class Mugunghwa {
             const chunk = 2;
 
             const grouped: any[] = [[], []];
-            const groupCount = Math.ceil((items.length === 0 ? 1 : items.length) / 2);
+            const groupCount = Math.ceil(
+                (items.length === 0 ? 1 : items.length) / 2,
+            );
 
             for (let i = 0, l = groupCount; i < l; i++) {
                 grouped[i] = items.splice(0, chunk);
@@ -37,7 +39,21 @@ export class Mugunghwa {
 
     async writing(slug: string) {
         try {
-            const res = await this.fetchFn(`${PUBLIC_API_BASE}/writing/` + slug);
+            const res = await this.fetchFn(
+                `${PUBLIC_API_BASE}/writings/` + slug,
+            );
+            return await res.json();
+        } catch (error) {
+            console.error(error);
+            return error;
+        }
+    }
+
+    async authCallback(code: string) {
+        try {
+            const res = await this.fetchFn(
+                `${PUBLIC_API_BASE}/auth/oauth/callback?code=` + code,
+            );
             return await res.json();
         } catch (error) {
             console.error(error);
