@@ -38,7 +38,7 @@
     <ul>
         <li><a href="/">home</a></li>
         <li><a href="/blog">writings</a></li>
-        <li><a href="/clipboards">clipboard</a></li>
+        <li><a href="/clipboard">clipboard</a></li>
         <li><a href="https://github.com/ln2r">github</a></li>
     </ul>
 </div>
