@@ -152,13 +152,8 @@
             margin-bottom: 0;
         }
 
-        p,
         small {
             padding-left: 1.3em;
-        }
-
-        p {
-            font-style: italic;
         }
     }
 </style>
