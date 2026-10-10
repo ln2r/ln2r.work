@@ -67,6 +67,35 @@
     </div>
 
     <div class="list">
+        <h2>clipboard</h2>
+        <small><a href="/cms/clipboards">add</a></small>
+        {#await data.clipboard}
+            <p>getting stuff i did...</p>
+        {:then data}
+            {#if data.length > 0}
+                {#each data as clipboard}
+                    <div class="item">
+                        <h3>
+                            > <a href="/cms/clipboards/{clipboard.id}"
+                                >{clipboard.title}</a
+                            >
+                        </h3>
+                        <small
+                            >Delete - Update | Added: {formatDate(
+                                clipboard.created,
+                            )}</small
+                        >
+                    </div>
+                {/each}
+            {:else}
+                <p>it seems i have not did anything yet.</p>
+            {/if}
+        {:catch error}
+            <p>the list seems broken... will get back to you soon.</p>
+        {/await}
+    </div>
+
+    <div class="list">
         <h2>files</h2>
         <small>upload</small>
         {#await data.files}
